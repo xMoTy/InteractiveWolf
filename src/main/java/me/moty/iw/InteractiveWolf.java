@@ -84,7 +84,7 @@ public class InteractiveWolf extends JavaPlugin implements Listener {
 		if (!e.getPlayer().getItemOnCursor().getType().isAir())
 			return;
 		if (e.getPlayer().getNearbyEntities(5, 3, 5).stream()
-				.noneMatch(en -> en instanceof Wolf
+				.noneMatch(en -> en instanceof Wolf && ((Wolf) en).getOwner() != null
 						&& ((Wolf) en).getOwner().getUniqueId().equals(e.getPlayer().getUniqueId())
 						&& !((Wolf) en).isSitting() && !activedWolves.containsKey(((Wolf) en))))
 			return;
