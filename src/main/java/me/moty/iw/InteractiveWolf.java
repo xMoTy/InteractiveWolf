@@ -119,7 +119,8 @@ public class InteractiveWolf extends JavaPlugin implements Listener {
 					});
 			itemEntity.addPassenger(i);
 			p.getNearbyEntities(5, 3, 5).stream()
-					.filter(en -> en instanceof Wolf && ((Wolf) en).getOwner().getUniqueId().equals(p.getUniqueId()))
+					.filter(en -> en instanceof Wolf && ((Wolf) en).getOwner() != null
+							&& ((Wolf) en).getOwner().getUniqueId().equals(p.getUniqueId()))
 					.map(en -> (Wolf) en).filter(w -> !w.isSitting() && !activedWolves.containsKey(w))
 					.forEach(w -> retrieveTask(i, itemEntity, w));
 		});
